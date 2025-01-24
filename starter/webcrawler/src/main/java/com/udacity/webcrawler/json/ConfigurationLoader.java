@@ -35,7 +35,7 @@ public final class ConfigurationLoader {
       ObjectMapper mapper = new ObjectMapper();
       mapper.disable(JsonParser.Feature.AUTO_CLOSE_SOURCE);
 
-      return mapper.readValue(reader, CrawlerConfiguration.class);
+      return mapper.readValue(reader, CrawlerConfiguration.Builder.class).build();
     }
   }
 
@@ -47,10 +47,10 @@ public final class ConfigurationLoader {
    */
   public static CrawlerConfiguration read(Reader reader) throws IOException {
     // This is here to get rid of the unused variable warning.
-    Objects.requireNonNull(reader);
-    ObjectMapper mapper = new ObjectMapper();
-    mapper.disable(JsonParser.Feature.AUTO_CLOSE_SOURCE);
+      Objects.requireNonNull(reader);
+      ObjectMapper mapper = new ObjectMapper();
+      mapper.disable(JsonParser.Feature.AUTO_CLOSE_SOURCE);
 
-    return mapper.readValue(reader, CrawlerConfiguration.class);
+    return mapper.readValue(reader, CrawlerConfiguration.Builder.class).build();
   }
 }

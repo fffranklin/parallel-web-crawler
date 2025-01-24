@@ -1,5 +1,6 @@
 package com.udacity.webcrawler.main;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.Guice;
 import com.udacity.webcrawler.WebCrawler;
 import com.udacity.webcrawler.WebCrawlerModule;
@@ -11,7 +12,6 @@ import com.udacity.webcrawler.profiler.Profiler;
 import com.udacity.webcrawler.profiler.ProfilerModule;
 
 import javax.inject.Inject;
-import java.io.BufferedWriter;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.nio.file.Path;
@@ -32,18 +32,41 @@ public final class WebCrawlerMain {
   @Inject
   private Profiler profiler;
 
+  /**
+   *  // TODO: Write the crawl results to a JSON file (or System.out if the file name is empty)
+   *  // TODO: Write the profile data to a text file (or System.out if the file name is empty)
+   * @throws Exception
+   */
   private void run() throws Exception {
     Guice.createInjector(new WebCrawlerModule(config), new ProfilerModule()).injectMembers(this);
 
     CrawlResult result = crawler.crawl(config.getStartPages());
     CrawlResultWriter resultWriter = new CrawlResultWriter(result);
 
-    String resultPathString = config.getResultPath();
-    if (resultPathString != null && !resultPathString.isEmpty()) {
-      Path resultPath = Paths.get(resultPathString);
+    String resultPathFileName = config.getResultPath();
+    if (!resultPathFileName.isEmpty()) {
+      Path resultPath = Paths.get(resultPathFileName);
       resultWriter.write(resultPath);
-    } else {
-      System.out.println("Error config.getResultPath() --> The file name is empty." + result);
+    } else{
+      System.out.println(" Result Path File Name is Empty!");
+      try (Writer writer = new OutputStreamWriter(System.out)) {
+        System.out.println(" Result Path File Name is Empty!");
+        ObjectMapper mapper = new ObjectMapper();
+
+        mapper.writeValue(writer, result);
+      }
+    }
+
+    String profileOutputPath = config.getProfileOutputPath();
+    System.out.println(" Profile Output Path is: " + profileOutputPath);
+    if(!profileOutputPath.isEmpty()) {
+        Path outputPath = Paths.get(profileOutputPath);
+        profiler.writeData(outputPath);
+    } else{
+      try (Writer writer = new OutputStreamWriter(System.out)) {
+        System.out.println(" ProfileOutputPath File Name is Empty!");
+        profiler.writeData(writer);
+      }
     }
   }
 
@@ -52,8 +75,8 @@ public final class WebCrawlerMain {
       System.out.println("Usage: WebCrawlerMain [starting-url]");
       return;
     }
-
     CrawlerConfiguration config = new ConfigurationLoader(Path.of(args[0])).load();
+
     new WebCrawlerMain(config).run();
   }
 }
