@@ -1,100 +1,14 @@
-# Project: Parallel Web Crawler
+# Parallel Web Crawler Project
 
-![UdaciSearch Logo](UdaciSearch.png)
+Project developed using **[Java SE 17](https://www.oracle.com/java/technologies/downloads/#java17)** and **[Maven 3.8.1](https://maven.apache.org/docs/3.8.1/release-notes.html)** for the **[Udacity Advanced Java Programming Techniques Course](https://www.udacity.com/course/advanced-java-programming-techniques--cd0381)**. 
 
-Welcome! This is your first week at the startup, **UdaciSearch**. You've been hired on as an Engineer, and you're really excited to make a big splash. UdaciSearch is interested in figuring out popular search terms on the internet in order to improve the [SEO](https://en.wikipedia.org/wiki/Search_engine_optimization) of their clients. Everyone wants to pop up at the top of a potential user's search! 
-
-You are given the source code for your company's legacy web crawler, which is single-threaded. You notice it's a bit slow, and you quickly realize a way to improve its performance and impress your new manager. You can upgrade the code to take advantage of multi-core architectures to increase crawler throughput. Furthermore, you will measure the performance of your crawler to prove that, given the same amount of time, the multi-threaded implementation can visit more web pages than the legacy implementation. It might just be your first week, but you're set to impress!
-
-## Getting Started
-
-### Dependencies
-
-  * Java JDK Version 17
-  * Maven 3.6.3 or higher
-  * IntelliJ IDEA
-
-### Installation
-
-  * Download the [JDK 17](https://www.oracle.com/java/technologies/downloads). 
-    I recommend JDK 17 since it is the latest long-term support Java version. Accept the license agreements and run the downloaded installer.
-  * Follow the official [installation](https://maven.apache.org/install.html) and run `mvn -version` in a terminal to make sure you have at least version 3.6.3 installed.
-  * Download the Community Edition of [IntelliJ IDEA](https://www.jetbrains.com/idea/download/). Run the downloaded installer.
-
-### Copying the Project Workspace
-
-Go to the [starter code GitHub repository](https://github.com/udacity/nd079-c2-advanced-java-programming-techniques-projectstarter). Find and click the green "Code" button, and follow the instructions there to either download the project in a .zip file or clone the repository onto your computer.
-
-Once you have done this, if you are using IntelliJ, you can import the project using `File > Open...` and then navigating to the `nd079-c2-advanced-java-programming-techniques-projectstarter/starter` folder that you just downloaded.
-
-#### Using the Terminal
-
-In this project, you will be executing commands in a terminal to compile your code, run unit tests, and run the web crawler app. If you are using IntelliJ (recommended), you can use the built-in Terminal tab by clicking the "Terminal" button near the lower left corner of the main window, or by pressing the keyboard shortcut (`Alt + F12` on Windows/Linux, or `⌥ + F12` on Mac).
-
-If you already have another terminal application you like to use, such as the terminal that comes with the operating system you are running, that will also work with this project. If you go this route, make sure you run the terminal from the root directory of the project. In other words, the terminal's working directory should be the same folder where the `pom.xml` file is located.
-
-*Note*: If you are using IntelliJ's Terminal tab, it automatically opens the terminal in the project's root directory.
-
-Once you have a terminal open, make sure everything is working by typing (or copy-pasting) the following `mvn` command into the terminal and pressing the `Enter` key:
-
-```
-mvn test -Dtest=WebCrawlerTest -DcrawlerImplementations=com.udacity.webcrawler.SequentialWebCrawler
-```
-
-_(In case you're wondering, "mvn" is short for "Maven". This command tells Maven to run the unit test named `WebCrawlerTest`, and uses a command-line flag to set the system property `crawlerImplementations` to "com.udacity.webcrawler.SequentialWebCrawler".)_
-
-If it worked, you should see something like this at the bottom of the terminal:
-
-```
-[INFO] Results:
-[INFO] 
-[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0
-[INFO] 
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD SUCCESS
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  2.017 s
-[INFO] Finished at: 2020-09-17T21:35:46-04:00
-[INFO] ------------------------------------------------------------------------
-```
-
-On the other hand, if your terminal output starts out like ths:
-
-```
-[INFO] Scanning for projects...
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD FAILURE
-[INFO] ------------------------------------------------------------------------
-```
-
-Make sure your terminal's working directory is the `webcrawler` folder which has the `pom.xml` file in it. When I run the terminal from IntelliJ on my computer, the terminal looks like this:
-
-![IntelliJ terminal working directory](TerminalWorkingDirectory.png)
-
-Notice that the rightmost part of the directory name is **`webcrawler`**, which means the active directory is correct. If your active directory is something different, you should use the `cd` command to change to the correct directory. For example, if your active directory is **`cd0381-advanced-java-programming-techniques-projectstarter`**, you would run the following command:
-
-```
-dustin@dustin-pc:~/IdeaProjects/cd0381-advanced-java-programming-techniques-projectstarter$ cd starter/webcrawler
-dustin@dustin-pc:~/IdeaProjects/cd0381-advanced-java-programming-techniques-projectstarter/starter/webcrawler$
-```
-
-If you are using Windows, you may have to use a backslash (`\`) instead of forward slash (`/`) to separate directory names. On Windows the above command becomes:
-
-```
-cd starter\webcrawler
-```
-
-### Unit Testing
-
-The starter code comes with some JUnit 5 tests to check your work. You are not expected to write additional tests yourself. The instructions will tell you when and how to run the unit tests for each feature as you go.
-
-If you do decide to write more tests yourself, please _do not_ modify any of the existing tests. You can add new test files and you can add `@Test` and `@ParameterizedTest` methods to the existing test files, but please do not touch any of the existing `@Test` or `@ParameterizedTest` methods.
+This Parallel Web Crawler Application was upgrated from a legacy single-threaded web crawler to a multi-core architecture to increase crawler throughput. Furthermore, the performance of the crawler was measured to prove that, given the same amount of time, the multi-threaded implementation can visit more web pages than the legacy implementation. 
 
 ## Project Instructions
 
 ### Step 1. Crawler Configuration
 
-Looking closely at the code repo that was shared with you, it's clear that the web crawler app reads in a JSON file to determine how it should run. Let's look an example of such a file:
+The web crawler app reads in a JSON file to determine how it should run. Let's look an example of such a file:
 
 #### JSON Configuration Example
 
@@ -130,7 +44,7 @@ Looking closely at the code repo that was shared with you, it's clear that the w
        
 ![Page Traversal](PageTraversal.png)
 
-In This Example, Your Crawler Would Only Visit Pages A, B, C, and D
+In This Example, the Crawler Would Only Visit Pages A, B, C, and D
 
 * `timeoutSeconds` - The max amount of time the crawler is allowed to run, in seconds. Once this amount of time has been reached, the crawler will finish processing any HTML it has already downloaded, but it is not allowed to download any more HTML or follow any more hyperlinks.
   
@@ -141,34 +55,33 @@ In This Example, Your Crawler Would Only Visit Pages A, B, C, and D
   
 * `resultPath` - Path where the web crawl result JSON should be written. If a file already exists at that path, it should be overwritten. If this option is empty or unset, the result should be printed to standard output.
 
-### Implementing Crawler Configuration
+### Crawler Configuration Implementation
 
-Everything you need to read the configuration file is in the `com.udacity.webcrawler.json` package. In fact, a Java representation of the configuration, `CrawlerConfiguration`, has already been implemented!
+In this step, I read the configuration file that is in the `com.udacity.webcrawler.json` package. In fact, a Java representation of the configuration, `CrawlerConfiguration`, has already been implemented!
 
-Your task is to fill in the `src/main/java/com/udacity/webcrawler/json/ConfigurationLoader.java` file:
+My task was to fill in the `src/main/java/com/udacity/webcrawler/json/ConfigurationLoader.java` file:
 
-  * `public static CrawlerConfiguration read(Reader reader)` - Implement this first.
+  * `public static CrawlerConfiguration read(Reader reader)` - First Implementation.
   
-  The `reader` parameter contains JSON input. Your `read(Reader reader)` method should read the JSON input and parse it into a `CrawlerConfiguration` using the Jackson JSON library. This library has already been included in the project dependencies, so you should be able to import classes from `com.fasterxml.jackson` without any additional steps.
+  The `reader` parameter contains JSON input. My `read(Reader reader)` method should read the JSON input and parse it into a `CrawlerConfiguration` using the Jackson JSON library. 
 
-  First, "tell" Jackson that `CrawlerConfiguration` uses the builder pattern by annotating the `CrawlerConfiguration` class with the `@JsonDeserialize` annotation:
+  First, I "told" Jackson that `CrawlerConfiguration` uses the builder pattern by annotating the `CrawlerConfiguration` class with the `@JsonDeserialize` annotation:
 
         @JsonDeserialize(builder = CrawlerConfiguration.Builder.class)
         public final class CrawlerConfiguration {
           ...
 
-  Next, define the mapping between JSON property names and builder methods by annotating each of the builder's setter methods with `@JsonProperty`. For example:
+  Next, I defined the mapping between JSON property names and builder methods by annotating each of the builder's setter methods with `@JsonProperty`. For example:
 
         @JsonProperty("startPages")
         public Builder addStartPages(String... startPages) {
           ...
 
-  Finally, implement `CrawlerConfiguration#read(Reader)` by creating a new `com.fasterxml.jackson.databind.ObjectMapper` and calling `ObjectMapper#readValue`.
+  Finally, I implemented `CrawlerConfiguration#read(Reader)` by creating a new `com.fasterxml.jackson.databind.ObjectMapper` and calling `ObjectMapper#readValue`.
   
-  * `public CrawlerConfiguration load()` - Implement this next.
+  * `public CrawlerConfiguration load()` - Implemented this next.
   
-  Your `load()` method will read the JSON string from a file `Path` which has already been provided to the `ConfigurationLoader` constructor. Pass that string to the `read(Reader reader)` and return the created `CrawlerConfiguration`. Remember to close the file when you are done!
-
+  My `load()` method will read the JSON string from a file `Path` which has already been provided to the `ConfigurationLoader` constructor. Pass that string to the `read(Reader reader)` and return the created `CrawlerConfiguration`.
 Finally, make sure the configuration unit tests pass by running them in the terminal:
 
 ```
@@ -181,7 +94,7 @@ mvn test -Dtest=ConfigurationLoaderTest
 
 Now the crawler can load its configuration and run, but it does not know how to tell you about its results. Let's fix that!
 
-You will need to print the results to a JSON file using this format:
+So, I printed the results to a JSON file using this format:
 
 ### Example JSON Output
 
@@ -211,9 +124,9 @@ You will need to print the results to a JSON file using this format:
 
 ### Implementing Crawler Output
 
-Now, it's time to fill in `src/main/java/com/udacity/webcrawler/json/CrawlResultWriter.java`. This should feel similar to the last step, but this time you are writing to a file (or a `Writer`) instead of reading. Just like for the `ConfigurationLoader`, you should use a `ObjectMapper` from the Jackson library, but this time call the `ObjectMapper#writeValue` method.
+Now, it's time to fill in `src/main/java/com/udacity/webcrawler/json/CrawlResultWriter.java`. This should feel similar to the last step, but this time I was writing to a file (or a `Writer`) instead of reading. Just like for the `ConfigurationLoader`, I used a `ObjectMapper` from the Jackson library, but this time calling the `ObjectMapper#writeValue` method.
 
-Once you are done, make sure the tests pass:
+After I done, I makeed sure the tests pass:
 
 ```
 mvn test -Dtest=CrawlResultWriterTest
@@ -223,25 +136,25 @@ mvn test -Dtest=CrawlResultWriterTest
 
 ### Step 3. Running the Legacy Crawler
 
-Before we run the crawler, let's make sure it can write its results so that we can see it working! It'd be embarrassing to show this to your manager only to realize it's not fully functional!
+Before we run the crawler, let's make sure it can write its results so that we can see it working!
 
-First, find the "main" program file at `src/main/java/com/udacity/webcrawler/main/WebCrawlerMain.java`. You should find two `TODO`s there: one for writing the crawl output, and one for writing the profile output.
+First, I found the "main" program file at `src/main/java/com/udacity/webcrawler/main/WebCrawlerMain.java`. I found two `TODO`s there: one for writing the crawl output, and one for writing the profile output.
 
-Don't worry about the profile output yet — you'll get to that later. For now, complete the first `TODO` using the output path stored in the `config` field. You will have to use the `CrawlResultWriter` class that you just wrote. Create an instance of `CrawlResultWriter` by passing in the `CrawlResult` (the code that creates the `CrawlResult` is already written).
+I completed the first `TODO` using the output path stored in the `config` field. You used the `CrawlResultWriter` class that I just wrote. Create an instance of `CrawlResultWriter` by passing in the `CrawlResult` (the code that creates the `CrawlResult` is already written).
 
-Next, check the value of `config.getResultPath()`. If it's a non-empty string, create a `Path` using `config.getResultPath()` as the file name, then pass that `Path` to the `CrawlResultWriter#write(Path)` method.
+Next, I checked the value of `config.getResultPath()`. If it's a non-empty string, create a `Path` using `config.getResultPath()` as the file name, then pass that `Path` to the `CrawlResultWriter#write(Path)` method.
 
 Alternatively, if the value of `config.getResultPath()` is empty, the results should be printed to standard output (also known as `System.out`).
 
 *Hint*: There _may_ be a standard `Writer` implementation in `java.io` (&ast;*cough*&ast; [`OutputStreamWriter`](https://docs.oracle.com/javase/10/docs/api/java/io/OutputStreamWriter.html) &ast;*cough*&ast;) that converts `System.out` into a `Writer` that can be passed to `CrawlResultWriter#write(Writer)`.
 
-Next, build the project (skipping tests, since they shouldn't all pass yet):
+Next, I builded the project (skipping tests, since they shouldn't all pass yet):
 
 ```
 mvn package -Dmaven.test.skip=true
 ```
 
-Finally, run the legacy crawler using the sample configuration file included with the project:
+Finally, I runned the legacy crawler using the sample configuration file included with the project:
 
 ```
 java -classpath target/udacity-webcrawler-1.0.jar \
@@ -249,35 +162,31 @@ java -classpath target/udacity-webcrawler-1.0.jar \
     src/main/config/sample_config_sequential.json
 ```
 
-Was the JSON result printed to the terminal?
-
 ### Step 4. Coding the Parallel Web Crawler
 
-Luckily for you, the forward-thinking author of the legacy web crawler created an extensible design that uses a dependency injection framework. They defined an interface `WebCrawler`; the legacy code exists in the concrete implementation `SequentialWebCrawler`. Definitely not the worst legacy code you've ever seen! All you have to do is create a second implementation, `ParallelWebCrawler`, that has the same functionality as the legacy crawler, but takes advantage of multi-core architectures.
+Luckily for me, the forward-thinking author of the legacy web crawler created an extensible design that uses a dependency injection framework. They defined an interface `WebCrawler`; the legacy code exists in the concrete implementation `SequentialWebCrawler`. Definitely not the worst legacy code I've ever seen! All I had to do was to create a second implementation, `ParallelWebCrawler`, that has the same functionality as the legacy crawler, but takes advantage of multi-core architectures.
 
-Your task is to fill in the `src/main/java/com/udacity/webcrawler/ParallelWebCrawler.java` file. Specifically the `crawl` method:
+My task was to fill in the `src/main/java/com/udacity/webcrawler/ParallelWebCrawler.java` file. Specifically the `crawl` method:
 
 `public CrawlResult crawl(List<String> startingUrls)`
   
-The input is a list of URLs where the crawl should start downloading and parsing HTML. For this part, you can reuse the legacy code that downloads and parses web pages. `@Inject` a `com.udacity.webcrawler.parser.PageParserFactory`, and use it like this:
+The input is a list of URLs where the crawl should start downloading and parsing HTML. For this part, I coud reuse the legacy code that downloads and parses web pages. `@Inject` a `com.udacity.webcrawler.parser.PageParserFactory`, and used it like this:
 
 ```
 PageParser.Result result = parserFactory.get(url).parse();
 ```
 
-The implementation of `ParallelWebCrawler` must actually run in parallel. A [`ForkJoinPool`](https://docs.oracle.com/javase/10/docs/api/java/util/concurrent/ForkJoinPool.html) has already been created for you in the `ParallelWebCrawler` constructor.
+The implementation of `ParallelWebCrawler` must actually run in parallel. A [`ForkJoinPool`](https://docs.oracle.com/javase/10/docs/api/java/util/concurrent/ForkJoinPool.html) has already been created for me in the `ParallelWebCrawler` constructor.
 
-Recall that `ForkJoinPool` is a kind of [`Executor`](https://docs.oracle.com/javase/10/docs/api/java/util/concurrent/Executor.html) that is optimized for efficient processing when most work tasks create other subtasks. In other words, it is ideal for building _recursive_ algorithms that run in parallel. In fact, the most common kinds of subtasks are called [`RecursiveAction`](https://docs.oracle.com/javase/10/docs/api/java/util/concurrent/RecursiveAction.html) and [`RecursiveTask`](https://docs.oracle.com/javase/10/docs/api/java/util/concurrent/RecursiveTask.html). Take a look at the legacy implementation (`src/main/java/com/udacity/webcrawler/SequentialWebCrawler.java`), and you will notice that also uses a _recursive_ algorithm because the `crawlInternal()` method invokes itself. Think about ways to take this recursive algorithm and use `ForkJoinPool` to make it parallel.
+Recall that `ForkJoinPool` is a kind of [`Executor`](https://docs.oracle.com/javase/10/docs/api/java/util/concurrent/Executor.html) that is optimized for efficient processing when most work tasks create other subtasks. In other words, it is ideal for building _recursive_ algorithms that run in parallel. In fact, the most common kinds of subtasks are called [`RecursiveAction`](https://docs.oracle.com/javase/10/docs/api/java/util/concurrent/RecursiveAction.html) and [`RecursiveTask`](https://docs.oracle.com/javase/10/docs/api/java/util/concurrent/RecursiveTask.html). I took a look at the legacy implementation (`src/main/java/com/udacity/webcrawler/SequentialWebCrawler.java`), and you noticed that also uses a _recursive_ algorithm because the `crawlInternal()` method invokes itself. So, I had to think about ways to take this recursive algorithm and use `ForkJoinPool` to make it parallel.
 
-There are multiple correct ways to do this. For starters, you will want to create your own custom task class, which should be a subclass of `RecursiveAction` or `RecursiveTask` — either choice is fine, but depending on your decision the final code will be slightly different. Each custom task will download and process URLs in a separate thread. Remember how `ForkJoinPool` works by having its subtasks create more subtasks? To do that, your custom task class will create other subtasks and run them using the static [`invoke`](https://docs.oracle.com/javase/10/docs/api/java/util/concurrent/ForkJoinTask.html#invoke()) or [`invokeAll`](https://docs.oracle.com/javase/10/docs/api/java/util/concurrent/ForkJoinTask.html#invokeAll()) methods.
+There are multiple correct ways to do this. For starters, maybe the way is to create an own custom task class, which should be a subclass of `RecursiveAction` or `RecursiveTask` — either choice is fine, but depending on the decision the final code will be slightly different. Each custom task will download and process URLs in a separate thread. Remember how `ForkJoinPool` works by having its subtasks create more subtasks? To do that, my custom task class will create other subtasks and run them using the static [`invoke`](https://docs.oracle.com/javase/10/docs/api/java/util/concurrent/ForkJoinTask.html#invoke()) or [`invokeAll`](https://docs.oracle.com/javase/10/docs/api/java/util/concurrent/ForkJoinTask.html#invokeAll()) methods.
 
-If it makes sense for the way you structure your implementation, you should consider applying the factory pattern to create these subtasks. You should aim to minimize the presence of large constructor calls with long lists of parameters; the builder pattern can help with this.
+**Hint:** If it makes sense for the way implementation is structured, you should consider applying the factory pattern to create these subtasks. You should aim to minimize the presence of large constructor calls with long lists of parameters; the builder pattern can help with this.
 
-Remember that in a parallel program, you can have multiple threads accessing data structures at the same time. Because of this, you should use one or more concurrent data structures to compute the output. Keep the following tips in mind:
+Remember that in a parallel program, there maybe multiple threads accessing data structures at the same time. Because of this, I shoulded use one or more concurrent data structures to compute the output with the following tips in mind:
 
   * For the `urlsVisited` output, the same URL should not be counted twice in the same crawl. *Note*: if a URL returns an HTTP error (such as a 400 error), the crawler still considers that as a "visit".
-
-    **Hint:** If you are struggling to find the best data structure for this part, I highly recommend you revisit the lesson on synchronization. In particular look at the last quiz in the section called **"What are Atomic Operations?"** and look at the answer for "Checking if a string is in the set and adding it if it's not already in the set". That is exactly what we want to do here with URLs!
 
   * When computing the `wordCounts`, the crawler should not accidentally count the results from the same page twice. Remember that the crawler will be downloading and processing multiple web pages at the same time, so this could be tricky!
 
@@ -285,7 +194,7 @@ Remember that in a parallel program, you can have multiple threads accessing dat
 
 #### Running Tests
 
-As you work, you can run the provided unit tests on your parallel web crawler implementation:
+As I worked, I runned the provided unit tests on my parallel web crawler implementation:
 
 ```
 mvn test -Dtest=WebCrawlerTest,ParallelWebCrawlerTest
@@ -295,11 +204,11 @@ These tests do not thoroughly test that the crawler uses correct synchronization
 
 ### Step 5. Fun with Functional Word Counting
 
-In order to _really_ impress your manager, you've will need to implement the final word count sorting using _only_ functional programming techniques.
+I needed to implement the final word count sorting using _only_ functional programming techniques.
 
-You open the utility class `src/main/java/com/udacity/webcrawler/WordCounts.java` and you notice it was written when Java 7 was the hot new thing. Did I mention it's legacy code? Let's update it to take advantage of the newer functional programming features of Java!
+I openned the utility class `src/main/java/com/udacity/webcrawler/WordCounts.java` and you noticed it was written when Java 7 was the hot new thing. As it was a legacy code I made updates to take advantage of the newer functional programming features of Java!
 
-You will see just one non-`private` method:
+There was just one non-`private` method:
 
 ```
 static Map<String, Integer> sort(Map<String, Integer> wordCounts, int popularWordCount)
@@ -313,11 +222,11 @@ Your new `sort` method must return a new `Map` that contains up to `popularWordC
 
 But wait, what exactly does it mean to use **only functional programming techniques**? Simple: Don't use any `for` loops. That's right, no `for` loops at all. Instead, you will have to process the `wordCounts` map using only the Java `Stream` API, lambdas, and method references. The new method should be a single `return` statement with a "chain" of `Stream` operations. You _are_ allowed to reuse the `WordCountComparator` class.
 
-*Hint*: To get started, turn `wordCounts` into a `Stream`. Your method should start like this: `return wordCounts.entrySet().stream()…`.
+*Hint*: To get started, turn `wordCounts` into a `Stream`. My method shoulded start like this: `return wordCounts.entrySet().stream()…`.
 
-Recall that the order of the returned map is important, so you should take that into account when choosing a [`Collector`](https://docs.oracle.com/javase/10/docs/api/java/util/stream/Collectors.html) to terminate the `Stream`.
+Recall that the order of the returned map is important, so I shouldedc take that into account when choosing a [`Collector`](https://docs.oracle.com/javase/10/docs/api/java/util/stream/Collectors.html) to terminate the `Stream`.
 
-When you are done, check your code against the unit tests:
+When I was done, I checked my code against the unit tests:
 
 ```
 mvn test -Dtest=WordCountsTest
@@ -337,19 +246,19 @@ com.udacity.webcrawler.parser.PageParserImpl#parse took 0m 2s 18ms
 
 #### Implementing the Profiler
 
-Everything you need is in the `src/main/java/com/udacity/webcrawler/profiler/` folder.
+Everything I needed was in the `src/main/java/com/udacity/webcrawler/profiler/` folder.
 
 The profiler will record the running times of different method invocations. Now that the crawler runs in parallel, this could happen concurrently from multiple different threads. The `ProfilingState` class has already been implemented for you to be thread-safe.
 
-You will be writing a method interceptor that intercepts method calls annotated with the `@Profiled` annotation. To create classes whose methods are intercepted, you will implement the `Profiler` utility class. This class will "wrap" the to-be-profiled objects in a dynamic proxy instance.
+I wrote a method interceptor that intercepts method calls annotated with the `@Profiled` annotation. To create classes whose methods are intercepted, I implemented the `Profiler` utility class. This class "wrap" the to-be-profiled objects in a dynamic proxy instance.
 
-Implementation will include the following steps:
+Implementation included the following steps:
 
   * Fill in `ProfilerImpl.java`. Reading Java's [`Proxy`](https://docs.oracle.com/javase/10/docs/api/java/lang/reflect/Proxy.html) documentation will be very helpful.
 
   * Fill in `ProfilingMethodInterceptor.java`. The `invoke` method should check whether the passed `Method` is annotated with `@Profiled`. If the method has the annotation, the interceptor should use the injected `java.time.Clock` to measure the duration of the method invocation, and then record it to the `ProfilingState`.
   
-Your interceptor should always return the same value (or throw the same `Throwable`) as the method that was intercepted. When implementing this, there are some common "gotchas" to look out for:
+My interceptor should always return the same value (or throw the same `Throwable`) as the method that was intercepted. When implementing this, there are some common "gotchas" to look out for:
 
   * Think carefully about how the proxy should behave for the `java.lang.Object#equals(Object)` method. Reading the [`InvocationHandler`](https://docs.oracle.com/javase/10/docs/api/java/lang/reflect/InvocationHandler.html) documentation will be very helpful.
 
@@ -357,13 +266,13 @@ Your interceptor should always return the same value (or throw the same `Throwab
 
 (*Note*: Due to limitations of the Java language, objects must be manually "wrapped" (using `Profiler.java`) to be profiled. The starter code already does this for you! Thanks, dependency injection! More sophisticated AOP frameworks sometimes use bytecode generation to avoid this kind of boilerplate.)
 
-Once you are done, run the unit tests to check your work:
+Once I was done, I runned the unit tests to check my work:
 
 ```
 mvn test -Dtest=ProfilerImplTest
 ```
 
-If you have been following the instructions in order and have already implemented the web crawler, you should now be able to run all the tests at once to make sure they pass:
+If I have been following the instructions in order and have already implemented the web crawler, I should now be able to run all the tests at once to make sure they pass:
 
 ```
 mvn test
@@ -383,7 +292,7 @@ If you want to make your profiler stand out (and also be significantly more usef
   
 ### Step 7. Run the Parallel Crawler!
 
-Congratulations! You implemented an entire parallel web crawler, complete with performance profiling! You should now be able to run it with the following commands:
+That's it!! I implemented an entire parallel web crawler, complete with performance profiling! I should now be able to run it with the following commands:
 
 ```
 mvn package
@@ -394,15 +303,10 @@ java -classpath target/udacity-webcrawler-1.0.jar \
 
 Try changing the starting pages in `src/main/config/sample_config.json` and see what different results you get!
 
-## Step 8. Project
-
-Please complete the **Project Quiz**. Your answers are not part of your project submission, so you _technically_ aren't required to complete this quiz, but you'll get more out of the project and the course if you do!
                   
 ## Built With
 
-Hooray! You're all done writing code for this course!
-
-Before continuing to the next section, take a brief moment to appreciate all the third-party Java libraries you used. Each of these projects represents many, many hours spent by other  developers to create useful software that you were able to utilize to build your web crawler.
+Third-party Java libraries uded:
 
 * [jsoup](https://jsoup.org/) - An open-source Java library for working with HTML.
   * License: [MIT License](https://jsoup.org/license)
@@ -416,23 +320,3 @@ Before continuing to the next section, take a brief moment to appreciate all the
   * License: [Eclipse Public License 2.0](https://github.com/junit-team/junit5/blob/main/LICENSE.md)
 * [Truth](https://github.com/google/truth) - An open-source assertion framework used in Java unit tests.
   * License: [Apache 2.0](https://github.com/google/truth/blob/master/LICENSE)
-
-## Project Submission
-
-For your submission, please submit the following:
-- Completed project code should be uploaded either to GitHub or a .zip file. The following Java files should be filled in with all TODOs addressed:
- - `src/main/java/com/udacity/webcrawler/json/ConfigurationLoader.java`
- - `src/main/java/com/udacity/webcrawler/json/CrawlResultWriter.java`
- - `src/main/java/com/udacity/webcrawler/ParallelWebCrawler.java`
-   - You should define and include your own helper classes in `src/main/java/com/udacity/webcrawler/`, as you see fit.
- - `src/main/java/com/udacity/webcrawler/WordCounts.java`
- - `src/main/java/com/udacity/webcrawler/profiler/ProfilerImpl.java`
- - `src/main/java/com/udacity/webcrawler/profiler/ProfilingMethodInterceptor.java`
- - `src/main/java/com/udacity/webcrawler/main/WebCrawlerMain.java`
-
-## Double-Check the Rubric
-Make sure you have completed all the rubric items [here](https://review.udacity.com/#!/rubrics/2927/view).
-
-## Submit your Project
-
-You can submit your project by uploading a zip file or selecting your GitHub repo on the Udacity website.
