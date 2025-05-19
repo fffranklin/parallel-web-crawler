@@ -12,6 +12,7 @@ import com.udacity.webcrawler.profiler.Profiler;
 import com.udacity.webcrawler.profiler.ProfilerModule;
 
 import javax.inject.Inject;
+import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.nio.file.Path;
@@ -44,6 +45,13 @@ public final class WebCrawlerMain {
     CrawlResultWriter resultWriter = new CrawlResultWriter(result);
 
     String resultPathFileName = config.getResultPath();
+    writeResultPath(resultPathFileName, result, resultWriter);
+
+    String profileOutputPath = config.getProfileOutputPath();
+    profilerWriteData(profileOutputPath);
+  }
+
+  private void writeResultPath(String resultPathFileName, CrawlResult result, CrawlResultWriter resultWriter) throws IOException {
     if (!resultPathFileName.isEmpty()) {
       Path resultPath = Paths.get(resultPathFileName);
       resultWriter.write(resultPath);
@@ -56,12 +64,13 @@ public final class WebCrawlerMain {
         mapper.writeValue(writer, result);
       }
     }
+  }
 
-    String profileOutputPath = config.getProfileOutputPath();
+  private void profilerWriteData(String profileOutputPath) throws IOException {
     System.out.println(" Profile Output Path is: " + profileOutputPath);
     if(!profileOutputPath.isEmpty()) {
-        Path outputPath = Paths.get(profileOutputPath);
-        profiler.writeData(outputPath);
+      Path outputPath = Paths.get(profileOutputPath);
+      profiler.writeData(outputPath);
     } else{
       try (Writer writer = new OutputStreamWriter(System.out)) {
         System.out.println(" ProfileOutputPath File Name is Empty!");
